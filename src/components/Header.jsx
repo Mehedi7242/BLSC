@@ -1,14 +1,34 @@
-import React, { useState } from "react"; 
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa"; 
-import { FaHome, FaInfoCircle, FaPhone, FaSignInAlt, FaCaretDown } from "react-icons/fa"; // Add caret down icon for dropdown
+import { FaBars, FaTimes } from "react-icons/fa";
+import { FaHome, FaInfoCircle, FaPhone, FaSignInAlt, FaCaretDown } from "react-icons/fa";
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false); // State for toggling mobile menu
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for toggling dropdown menu
+  const [isSticky, setIsSticky] = useState(false); // State for sticky navbar
+
+  // Check if the page is scrolled
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  };
+
+  // Add scroll event listener
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <header className="bg-gray-800 text-white shadow-md">
+    <header
+      className={`bg-gray-800 text-white shadow-md w-full ${isSticky ? "fixed top-0 left-0 z-10" : "relative"}`}
+    >
       <nav className="container mx-auto p-4 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <Link to="/" className="text-2xl font-bold">

@@ -9,7 +9,6 @@ import Login from "../features/auth/Login";
 import Register from "../features/auth/Register";
 import NotFound from "../pages/NotFound";
 
-
 import Dashboard from "../features/dashboard/Dashboard";
 import Appointments from "../features/appointments/Appointments";
 import AppointmentDetails from "../features/appointments/AppointmentDetails"; 
@@ -22,6 +21,12 @@ import PrivateRoute from "./PrivateRoute";
 import LawyerDetails from "../features/Home/LawyerDetails";
 import EditProfile from "../features/profile/EditProfile";
 import Message from "../features/dashboard/Message";
+import ManageClients from "../features/dashboard/ManageClients";
+import AddNewClient from "../features/dashboard/AddNewClient";
+import EditClient from "../features/dashboard/EditClient";
+import GenerateReport from "../features/dashboard/GenerateReport";
+import ManageAppointments from "../features/dashboard/ManageAppointments";
+
 
 const AppRoutes = () => {
   return (
@@ -50,7 +55,10 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route path="/lawyers/:lawyerName" element={<LawyerDetails />} />
+      <Route
+       path="/lawyers/:lawyerName" 
+       element={<LawyerDetails />} 
+      />
       <Route
         path="/appointments/:appointmentId"
         element={
@@ -59,6 +67,12 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       />
+
+      <Route
+         path="/dashboard/reports"
+        element={<GenerateReport />} 
+      />
+
       <Route
         path="/profile"
         element={
@@ -85,7 +99,40 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       />
+
+  
+
+      <Route
+        path="/dashboard/appointments"
+        element={
+          <PrivateRoute>
+            <ManageAppointments></ManageAppointments>
+          </PrivateRoute>
+        }
+      />
       
+      <Route
+        path="/dashboard/manage-clients"
+        element={
+          <PrivateRoute>
+            <ManageClients></ManageClients>
+          </PrivateRoute>
+        }
+      />
+      <Route 
+        path="/dashboard/manage-clients/edit/:id" 
+        element={<EditClient />} 
+      /> {/* Route for editing client */}
+
+      <Route
+        path="/dashboard/manage-clients/add"
+        element={
+          <PrivateRoute>
+            <AddNewClient />
+          </PrivateRoute>
+        }
+      />
+
       <Route
         path="/support/issues"
         element={
