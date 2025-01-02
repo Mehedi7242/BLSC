@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Dummy data for messages
 const messages = [
@@ -29,6 +29,29 @@ const messages = [
 ];
 
 const Message = () => {
+  const [selectedMessage, setSelectedMessage] = useState(null); // Tracks the message being replied to
+  const [replyText, setReplyText] = useState(''); // Stores the reply text
+  const [sentReplies, setSentReplies] = useState([]); // Stores all sent replies
+
+  // Handle reply button click
+  const handleReplyClick = (message) => {
+    setSelectedMessage(message);
+    setReplyText('');
+  };
+
+  // Handle sending the reply
+  const handleSendReply = () => {
+    if (replyText.trim() === '') return;
+
+    // Save the reply
+    setSentReplies((prevReplies) => [
+      ...prevReplies,
+      { messageId: selectedMessage.id, reply: replyText },
+    ]);
+    setSelectedMessage(null); // Close reply box
+    setReplyText('');
+  };
+
   return (
     <div className="p-6 bg-gray-100">
       <h2 className="text-2xl font-bold mb-4">Messages</h2>
@@ -43,12 +66,64 @@ const Message = () => {
                   <span className="font-semibold">{message.sender}</span>
                   <p className="text-sm text-gray-500">{message.content}</p>
                 </div>
-                <span className="text-sm text-gray-400">{message.time}</span>
+                <div className="flex items-center space-x-4">
+                  <span className="text-sm text-gray-400">{message.time}</span>
+                  <button
+                    className="text-blue-500 hover:underline"
+                    onClick={() => handleReplyClick(message)}
+                  >
+                    Reply
+                  </button>
+                </div>
+              </div>
+
+              {/* Display Sent Replies for this Message */}
+              <div className="mt-2">
+                {sentReplies
+                  .filter((reply) => reply.messageId === message.id)
+                  .map((reply, index) => (
+                    <div
+                      key={index}
+                      className="bg-gray-200 text-gray-700 text-sm p-2 rounded-md mt-1"
+                    >
+                      {reply.reply}
+                    </div>
+                  ))}
               </div>
             </li>
           ))}
         </ul>
       </div>
+
+      {/* Reply Box */}
+      {selectedMessage && (
+        <div className="mt-6 bg-white shadow-lg rounded-lg p-4">
+          <h3 className="text-lg font-bold mb-2">
+            Replying to {selectedMessage.sender}
+          </h3>
+          <textarea
+            className="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-green-500"
+            rows="4"
+            placeholder="Type your reply here..."
+            value={replyText}
+            onChange={(e) => setReplyText(e.target.value)}
+          />
+          <div className="flex justify-end space-x-4">
+            <button
+              className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400"
+              onClick={() => setSelectedMessage(null)}
+            >
+              Cancel
+            </button>
+            <button
+              className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
+              onClick={handleSendReply}
+            >
+              Send Reply
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

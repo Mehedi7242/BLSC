@@ -32,7 +32,7 @@ const Header = () => {
       <nav className="container mx-auto p-4 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <Link to="/" className="text-2xl font-bold">
-            <span className="text-green-500">B</span>LSC
+            <span className="text-green-500">B</span>LCS
           </Link>
 
           {/* Mobile Hamburger Icon */}
