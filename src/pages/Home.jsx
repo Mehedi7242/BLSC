@@ -5,6 +5,7 @@ import Testimonials from "./../features/Home/Testimonials";
 import CTA from "./../features/Home/CTA";
 import WhyChooseUs from "./../features/Home/WhyChooseUs";
 import PopularLawyers from "../features/Home/PopularLawyers";
+import BannerSlider from "../features/Home/BannerSlider";
 
 
 
@@ -12,6 +13,7 @@ const Home = () => {
   return (
     <div>
       <Banner />
+      <BannerSlider></BannerSlider>
       <Services />
       <Testimonials />
       <WhyChooseUs />

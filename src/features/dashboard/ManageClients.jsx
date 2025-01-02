@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaPen, FaTrash } from "react-icons/fa";
+import DashboardChart from "./DashboardChart";
 
 const ManageClients = () => {
   const [clients, setClients] = useState([
@@ -59,6 +60,7 @@ const ManageClients = () => {
           Add New Client
         </Link>
       </div>
+      <DashboardChart></DashboardChart>
     </div>
   );
 };

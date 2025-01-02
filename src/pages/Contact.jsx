@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BannerSlider from "../features/Home/BannerSlider";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -25,6 +26,7 @@ const Contact = () => {
 
   return (
     <section className="bg-gray-100 py-10">
+      <BannerSlider></BannerSlider>
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-6">
