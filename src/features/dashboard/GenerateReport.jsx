@@ -93,7 +93,7 @@ const GenerateReport = () => {
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
       <div className="w-64 bg-gray-800 text-white p-6">
-        <h2 className="text-2xl font-bold mb-8">Admin Panel</h2>
+        <h2 className="text-2xl font-bold mb-8">Lawyer Panel</h2>
         <nav>
           <ul>
             <li className="mb-4">

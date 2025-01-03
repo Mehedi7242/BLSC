@@ -34,7 +34,7 @@ const AddNewClient = () => {
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">Add New Client</h2>
       {/* Sidebar */}
       <div className="w-64 bg-gray-800 text-white p-6">
-        <h2 className="text-2xl font-bold mb-8">Admin Panel</h2>
+        <h2 className="text-2xl font-bold mb-8">Laywer Panel</h2>
         <nav>
           <ul>
             <li className="mb-4">
