@@ -55,7 +55,7 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <div className="flex-1 p-6">
-        <h2 className="text-2xl font-bold mb-4">Admin Dashboard</h2>
+        <h2 className="text-2xl font-bold mb-4">Laywer Dashboard</h2>
 
         {/* Dashboard Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
